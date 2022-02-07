@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" bgcolor="#fff8dc">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>LAST.NAME</th>
+        <th>AGE</th>
+        <th bgcolor="#7fff00">edit user</th>
+        <th bgcolor="#b8860b">get user</th>
+        <th bgcolor="#dc143c">delete</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getId}"></td>
+        <td th:text="${user.getName}"></td>
+        <td th:text="${user.getLastName}"></td>
+        <td th:text="${user.getAge}"></td>
+        <td><a th:href="@{/{id}/edit(id=${user.getId()})}"><input type="submit" value="Edit User"/></a></td>
+        <td><a th:href="@{/{id}(id=${user.getId()})}"><input type="submit" value="Get User"/></a></td>
+        <td>
+            <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+</table>
+        <a href="/new">
+            <input type="submit" value="Add User"/>
+        </a>
+</body>
+</html>
