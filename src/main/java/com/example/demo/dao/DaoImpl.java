@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class DaoImpl implements Dao {
 
-    @PersistenceContext
+    @Autowired
     private EntityManagerFactory entityManagerFactory;
 
     @Transactional
