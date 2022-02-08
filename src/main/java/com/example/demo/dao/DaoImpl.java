@@ -1,10 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.model.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
+import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +11,7 @@ import java.util.List;
 @Repository
 public class DaoImpl implements Dao {
 
-    @Autowired
+    @PersistenceContext
     private EntityManagerFactory entityManagerFactory;
 
     @Transactional
