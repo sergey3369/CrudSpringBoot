@@ -16,8 +16,8 @@ public class ControllerBase {
     }
 
     @GetMapping("/")
-    String getAllUsersPage(Model s) {
-        s.addAttribute("users", userService.getUsers());
+    String getAllUsersPage(Model model) {
+        model.addAttribute("users", userService.getUsers());
         return "users";
     }
 
@@ -29,25 +29,30 @@ public class ControllerBase {
 
     @GetMapping("/new")
     String getAddPage(Model model) {
-        model.addAttribute("user",new User());
+        model.addAttribute("user", new User());
         return "new";
     }
+
     @GetMapping("/{id}/edit")
     String getEditPage(@PathVariable Integer id, Model model) {
-        model.addAttribute("user",userService.getUser(id));
+        User user = userService.getUser(id);
+        model.addAttribute("user", user);
+        userService.deleteUser(Math.toIntExact(user.getId()));
         return "edit";
     }
 
     @PostMapping("/")
-    String add (@ModelAttribute("user") User user) {
+    String add(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/";
     }
-    @PatchMapping("/{id}")
-    String edit(@PathVariable Integer id, @ModelAttribute("user") User user){
-        userService.update(id,user);
+
+    @PatchMapping("/")
+    String edit(@ModelAttribute("user") User user) {
+        userService.update(user);
         return "redirect:/";
     }
+
     @DeleteMapping("/{id}")
     String delete(@PathVariable Integer id) {
         userService.deleteUser(id);

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Entity
 @Table(name = "db")
 @Setter
@@ -20,7 +19,7 @@ public class User {
     private Long id;
     @Column
     private String name;
-    @Column(name = "lastName")
+    @Column
     private String lastName;
     @Column
     private Integer age;

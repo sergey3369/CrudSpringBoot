@@ -5,13 +5,13 @@ import com.example.demo.model.User;
 import java.util.List;
 
 public interface UserService {
-    public List<User> getUsers();
+    List<User> getUsers();
 
-    public void saveUser(User user);
+    void saveUser(User user);
 
-    public User getUser(int id);
+    User getUser(int id);
 
-    public void deleteUser(int id);
+    void deleteUser(Integer id);
 
-    void update(int id, User user);
+    void update( User user);
 }
